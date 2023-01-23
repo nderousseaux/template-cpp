@@ -6,16 +6,16 @@
     "configurations":
     [
         {
-            "type": "gdb",
-            "request": "attach",
-            "name": "Launch debug",
-            "executable": "./{{cookiecutter.project_name}}",
-            "target": ":8888",
-            "remote": true,
-            "cwd": "${workspaceRoot}",
-            "valuesFormatting": "parseText",
-            "preLaunchTask": "launch",
-            "postDebugTask": "clean"
-        }
+            "name": "(lldb) Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceRoot}/{{cookiecutter.project_name}}",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "MIMode": "lldb",
+            "preLaunchTask": "make",
+        },
     ]
 }
