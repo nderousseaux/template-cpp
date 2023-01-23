@@ -1,0 +1,3 @@
+*.o
+{{cookiecutter.project_name}}
+.DS_Store
