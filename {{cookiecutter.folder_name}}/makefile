@@ -11,7 +11,7 @@ TARGETDIR	:= .
 CFLAGS		:= -Wall -Wextra -Werror -I$(INCDIR)
 
 #Files
-SRCS		:= $(wildcard $(SRCDIR)/*.cpp)
+SRCS		:= $(wildcard $(SRCDIR)/**/*.cpp) $(wildcard $(SRCDIR)/*.cpp)
 OBJS		:= $(patsubst $(SRCDIR)/%.cpp, $(OBJDIR)/%.o, $(SRCS))
 INCLUDES	:= $(wildcard $(INCDIR)/*.h)
 
@@ -25,6 +25,9 @@ $(TARGETDIR)/$(TARGET): $(OBJS) #On construit l'executable
 	$(CC) $(CFLAGS) -o $@ $^
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp #On construit le reste
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+$(OBJDIR)/%.o: $(SRCDIR)/**/%.cpp #On construit le reste (dans les sous-dossiers)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
